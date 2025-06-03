@@ -34,6 +34,7 @@ let padRows = function (i,num) {
     }
 }
 
+//my code
 // for (let i = 1; i < num - 1; i++){
 //     rows.push(padRows(i, num));
 // }
@@ -41,6 +42,10 @@ let padRows = function (i,num) {
 // for (let i = num/2; i >1; i--){
 //     rows.push(padRows(i, num));
 // }
+
+//AI code : Math.ceil(x) rounds x up to the next whole number, Math.floor(x) rounds x down.
+// Math.ceil(2.5) → 3
+// Math.floor(2.5) → 2
 
 for (let i = 1; i <= Math.ceil(num / 2); i++) {
     rows.push(padRows(i, num));
