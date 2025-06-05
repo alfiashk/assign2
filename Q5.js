@@ -9,8 +9,7 @@
 // 1, 10  --> [1, 2, 3, 4, 5, 6, 7, 8, 9]
 // 1, 100 --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
 
-let start = 1;
-let end = 100;
+
 
 let res = function(a, b) {
     let arr = [];
@@ -28,4 +27,15 @@ let res = function(a, b) {
 
 };
 
-console.log(res(start, end));
+
+
+console.log(res(1, 10));
+console.log(res(1,100));
+console.log(res(90,150));
+console.log(res(1,1));
+console.log(res(200, 201));
+console.log(res());
+
+
+
+module.exports = res;

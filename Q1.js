@@ -17,13 +17,18 @@
 // Input:  "abc def gh34 434ff 55_eri 123 343"
 // Output: "43hgff434cbafed343ire_55321"
 
-let str = "abc def ghi 123";
 
-let newStr = str.split(" ");
 
-while (newStr.length > 1) {
+
+
+function rev(str) {
+    if (str.trim() === "") {
+        throw new Error("Empty String not allowed");
+      }
+    let newStr = str.split(" ");
+    while (newStr.length > 1) {
     let reversed = newStr.map(word => word.split('').reverse().join(''));
-    console.log(reversed)
+    // console.log(reversed)
     let result = [];
     for (let i = 0; i < reversed.length; i += 2) {
         if (i + 1 < reversed.length) {
@@ -32,9 +37,15 @@ while (newStr.length > 1) {
             result.push(reversed[i]);
         }
     }
-
     newStr = result;
+    }
+    return newStr.join("");
 }
 
 
-console.log(newStr.join(""));  
+console.log(rev('abc def')); 
+console.log(rev('abc def ghi 123'));  
+console.log(rev('abc def gh34 434ff 55_eri 123 343'));  
+
+
+module.exports = rev;

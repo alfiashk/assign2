@@ -25,16 +25,38 @@
 // "  *\n ***\n*****\n ***\n  *\n"
 
 let num = 7;
-let char = "*";
-let rows = [];
-let res = "";
-let padRows = function (i,num) {
-    if (num > 0 && num % 2 !== 0) {  
-        return " ".repeat(num - i) + char.repeat( 2*i-1 ) + " ".repeat(num - i);
+function diamond(num) {
+    if (num <= 0 || num % 2 === 0) return null;
+
+    let rows = [];
+
+    let padRows = function(i, num) {
+        let stars = 2 * i - 1;
+        let spaces = (num - stars) / 2;
+        return " ".repeat(spaces) + "*".repeat(stars);
+    };
+
+    for (let i = 1; i <= Math.ceil(num / 2); i++) {
+        rows.push(padRows(i, num));
     }
+    for (let i = Math.floor(num / 2); i >= 1; i--) {
+        rows.push(padRows(i, num));
+    }
+
+    return rows.map(row => row + "\n").join("");
 }
 
-//my code
+console.log(diamond(1));
+console.log(diamond(3));
+console.log(diamond(5));
+console.log(diamond(4));
+console.log(diamond(-5));
+
+
+
+module.exports = diamond;
+
+//my code didnt work
 // for (let i = 1; i < num - 1; i++){
 //     rows.push(padRows(i, num));
 // }
@@ -47,14 +69,3 @@ let padRows = function (i,num) {
 // Math.ceil(2.5) → 3
 // Math.floor(2.5) → 2
 
-for (let i = 1; i <= Math.ceil(num / 2); i++) {
-    rows.push(padRows(i, num));
-}
-for (let i = Math.floor(num / 2); i >= 1; i--) {
-    rows.push(padRows(i, num));
-}
-
-for (let row of rows) {
-    res = res + row + "\n";
-}
-console.log(res);

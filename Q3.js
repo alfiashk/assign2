@@ -4,11 +4,11 @@
 
 // Note: number.toString(2) converts a number to its binary string.
 
-let num = 4567;
+let num = 1234;
 
 let result = function(num) {
     let binNum = num.toString(2);
-    let bit = binNum.split("");
+    let bit = binNum.split('');
     // console.log(bit);
     let count = bit.filter((b) => b === '1').length;
     return count;
@@ -16,3 +16,4 @@ let result = function(num) {
 }
 
 console.log(result(num));
+module.exports = result;

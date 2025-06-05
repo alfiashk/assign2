@@ -14,20 +14,27 @@
 // titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 
 let str = "the quick BROWN FOX";
-let result = function(str, minor) {
+let result = function (str, minor) {
     let lower = str.toLowerCase();
-    let minorList = minor.split(" ");
+    let minorList = minor? minor.split(" "): [];
     console.log("string in lowercase: ", lower);
     // console.log(minorList);
     let capitalised = lower.split(" ");
     // console.log(capitalised);
     for (let i = 0; i < capitalised.length; i++) {
-        if (!minorList.includes(capitalised[i]) ) {
+        if (!minorList.includes(capitalised[i])) {
             capitalised[i] = capitalised[i].charAt(0).toUpperCase() + capitalised[i].slice(1);
         }
     }
     return str = capitalised.join(" ");
 }
 
-;
-console.log(result(str, "quick"));
+console.log(result('a clash of KINGS', 'a an the of')); 
+
+console.log(result('THE WIND IN THE WILLOWS', 'The In')); 
+
+console.log(result('the quick brown fox')); 
+console.log(result('', 'a the')); 
+
+
+module.exports = result;
