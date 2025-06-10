@@ -26,10 +26,49 @@
 
 // in C:
 // removNb(26) should return  {{15, 21}{21, 15}} tested by way of strings.
-// Function removNb should return a pointer to an allocated array of Pair pointers, each one also allocated. 
+// Function removNb should return a pointer to an allocated array of Pair pointers, each one also allocated.
 // Note
 // See examples of returns for each language in "RUN SAMPLE TESTS"
 
+// function removeNum(n) {
+//     let result = [];
+//     let sum = (n * (n + 1)) / 2;
+//     for (let a = 1; a <= n; a++) {
+//         //Calculate possible b for current a using the derived formula:
+//         //From a * b = totalSum - a - b → b = (sum - a) / (a + 1)
+//         let b = (sum - a) / (a + 1);
+//         if (Number.isInteger(b) && b <= n) {
+//             result.push([a, b]);
+//         }
+//     }
+
+//     return result;
+// }
+// console.log(removeNum(26));
+// console.log(removeNum(100));
+
+// module.exports = removeNum;
+
+//Rujan sir's solution
+const removeNb = (n) => {
+    let totalSum = 0;
+    for (let i = 1; i <= n; i++){
+      totalSum += i;
+    }
+    for (let i = 1; i <= n; i++){
+      let subracted = totalSum - i;
+      for (let j = i + 1; j <= n; j++){
+        let pairSubtracted = subracted - j;
+        if (pairSubtracted == i * j) {
+          return [i, j];
+        }
+      }
+    } return [];
+  }
+console.log(removeNb(26));
+console.log(removeNb(100));
+  
+module.exports = removeNb;
 
 
 
